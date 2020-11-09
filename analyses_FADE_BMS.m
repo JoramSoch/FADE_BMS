@@ -2,17 +2,19 @@
 % _
 % This script performs the entire data analysis for the FADE-BMS study.
 % 
-% written by Joram Soch <Joram.Soch@DZNE.de>, 07/08/2020, 13:28
+% written by Joram Soch <Joram.Soch@DZNE.de>, 07/08/2020, 13:28;
+% adapted: 09/11/2020, 11:46
 
 
 %%% Step 0: analysis parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % directories and subjects
 stud_dir   =  'C:\Joram\projects\DZNE\FADE\sharing\FADE_BMS\';
-subj_file  =  'subjects/subjects_FADE_BMS.xls';
-subj_files = {'subjects/subjects_FADE_BMS_young.xls';
-              'subjects/subjects_FADE_BMS_old.xls'};
-stat_suffs = {'young', 'old'};
+subj_file  =  'subjects/subjects.xls';
+subj_files = {'subjects/subjects_FADE_young.xls';
+              'subjects/subjects_FADE_older.xls';
+              'subjects/subjects_yFADE.xls'};
+stat_suffs = {'FADE_young', 'FADE_older', 'yFADE_replication'};
 
 % create analysis super-folders
 if ~exist(strcat(stud_dir,'MACS_analyses/'),'dir')
@@ -23,7 +25,8 @@ if ~exist(strcat(stud_dir,'SPM_analyses/'),'dir')
 end;
 
 % specify analyses to perform
-thx2do = [1:3, 4.1, 4.2, 5:10, 11];
+% thx2do = [1:3, 4.1, 4.2, 5:10, 11];
+thx2do = [4.1, 4.2, 5:10, 11];
 
 
 %%% Analysis 1: GLMs_PE vs. GLMs_TD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -104,7 +107,7 @@ end;
 if ismember(4.2,thx2do)
 
 % calculate cvLFEs
-subj_GLM5 = 'subjects/subjects_FADE_BMS_GLM_5.xls';
+subj_GLM5 = 'subjects/subjects_GLM_5.xls';
 MS_file   = 'models/MS_FADE_04_TD_3_5.mat';
 fam_vec   = [1 2];
 fam_nam   = {'GLMs_TD_3', 'GLMs_TD_5'};
@@ -122,8 +125,9 @@ cvLBF_meta_batch(stud_dir, subj_GLM5, MS_file, mod_vecs(3,:), 'MA_cvLFE.nii', 'G
 cvLBF_meta_batch(stud_dir, subj_GLM5, MS_file, mod_vecs(4,:), 'MA_cvLFE.nii', 'GLMs_TD_5_vs_0');
 
 % run BMS and SMM
-subjs_GLM5= {'subjects/subjects_FADE_BMS_GLM_5_young.xls';
-             'subjects/subjects_FADE_BMS_GLM_5_old.xls'};
+subjs_GLM5= {'subjects/subjects_FADE_GLM_5_young.xls';
+             'subjects/subjects_FADE_GLM_5_older.xls';
+             'subjects/subjects_yFADE_GLM_5.xls'};
 MS_file   =  'models/MS_FADE_04_TD_0-5_fams.mat';
 img_paths = {'cvLME_maps/*_GLMs_TD_1_vs_0_MC_cvLBF.nii';
              'cvLME_maps/*_GLMs_TD_2_vs_0_MC_cvLBF.nii';
