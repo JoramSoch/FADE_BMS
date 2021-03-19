@@ -2,9 +2,9 @@
 
 **Bayesian model selection for the FADE Paradigm**
 
-This code belongs to the paper "Bayesian model selection favors parametric over categorical fMRI subsequent memory models in young and older adults" by Soch, Richter et al. (2020), publicly available from *bioRxiv* and currently under review at *NeuroImage*. For instructions how to process these data, see below.
+This code belongs to the paper "Bayesian model selection favors parametric over categorical fMRI subsequent memory models in young and older adults" by Soch, Richter et al. (2021), published open access in *NeuroImage*. For instructions how to process these data, see below.
 
-- Preprint: https://www.biorxiv.org/content/10.1101/2020.07.27.220871v5
+- Paper: https://www.sciencedirect.com/science/article/pii/S1053811921000975
 - Data (1): https://neurovault.org/collections/EKUNXKRB/
 - Data (2): https://neurovault.org/collections/QBHNSRVW/
 - Code: https://github.com/JoramSoch/FADE_BMS
